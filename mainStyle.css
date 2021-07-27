@@ -1,0 +1,103 @@
+html{
+    box-sizing: border-box;
+    font-size: 10px;
+    padding:0;
+    margin:0;
+}
+
+body{   
+    font-family: Raleway, sans-serif;
+    min-height: 100vh;
+}
+
+.gameMenu{
+    border: 1px solid black;
+    display:grid;
+    grid-template-areas: 
+        "difficulty difficulty"
+        "playerSelect playerSelect"
+        "mainGame mainGame"
+        "gameOptions gameOptions"
+    ;
+    margin:auto; 
+    width:60%;
+}
+
+.difficulty{
+    grid-area: difficulty;
+    margin:5px 5px 15px;
+    display:flex;
+    justify-content:center;
+}
+
+select{
+    border: .5px solid black;
+    border-radius: 5px;
+    color: #203647;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    outline: none;
+    background-color:white;
+}
+
+.players{
+    display:flex;
+    grid-area: playerSelect;
+    justify-content:space-around;
+}
+
+.players--button{
+    background-color:white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    height:3rem;
+    width: 25%;
+}
+
+.players--button__unselected{
+    border: 2px solid lightgray;
+    color: grey;
+    font-weight: 600;
+}
+
+.players--button__selected{
+    border: 2px solid black;
+    color: black;
+    font-weight: 800;
+}
+
+.mainGame{
+    grid-area: mainGame;
+    margin:10px;
+    background-color: lightblue;
+}
+
+.mainGame--title{
+    font-size: 10rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.gameOptions{
+    align-items: center;
+    display:flex;
+    font-size: 1.5rem;
+    grid-area: gameOptions;
+    justify-content: space-around;
+    margin: 1rem;
+}
+
+.gameOptions--restartGame{
+    border: .5px solid black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    height: 10rem;
+    width: 70%;
+}
+
+.mainGame--board{
+    display:none;
+    grid-area: gameBoard;
+}
