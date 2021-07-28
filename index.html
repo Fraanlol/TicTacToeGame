@@ -32,17 +32,50 @@
             <div class="mainGame">
 
                 <div class="mainGame--title">
-                    Tic <br> Tac <br> Toe <br>
+                    <div class="title--vline"></div>
+                    <p class="title--letters">TXc</p>
+                    <p class="title--letters">TXc</p>
+                    <p class="title--letters">TXe</p>
                 </div>
 
                 <div class="mainGame--board">
-                    <div>
-                        testing
+                    <div class="firstRow row">
+                        <button class="boardSquare">
+
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
+                    </div>
+                   
+                    <div class="secondRow row">
+                        <button class="boardSquare">
+
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
+                    </div>
+
+                    <div class="thirdRow row">
+                        <button class="boardSquare">
+
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
+                        <button class="boardSquare">
+    
+                        </button>
                     </div>
                 </div>
-
             </div>
-
             <div class="gameOptions">
                 <button class="gameOptions--restartGame"> 
                     Reset Game
@@ -51,5 +84,27 @@
            
         </div>
     </main>
+    
+    <script>
+        let words = document.querySelectorAll(".title--letters");
+        setTimeout(() => {
+            Array.from(words).forEach((word,index) =>{
+                setTimeout(() => {
+                    word.classList.toggle("ttshow");
+                }, index*500)
+            })
+        }, 1000)
+        setTimeout(() => {
+            Array.from(words).forEach((word,index) =>{
+                setTimeout(() => {
+                    word.classList.toggle("ttshow");
+                }, index*500)
+            })
+        }, 5000)
+        setTimeout(() => {
+            document.querySelector(".mainGame--title").style.display = "none";
+            document.querySelector(".mainGame--board").style.display = "flex";
+        },6500)
+    </script>
 </body>
 </html>

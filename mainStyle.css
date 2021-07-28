@@ -3,6 +3,7 @@ html{
     font-size: 10px;
     padding:0;
     margin:0;
+    
 }
 
 body{   
@@ -77,8 +78,68 @@ select{
     font-size: 10rem;
     margin: 1rem;
     text-align: center;
+    height: 55vh;
 }
 
+.title--vline{
+    position:absolute;
+    border-right: 5px solid black;
+    height:0px;
+    right:49.4%;
+    animation: slider 2s linear 3s forwards;
+}
+
+@keyframes slider{
+    0%{
+        height: 0px
+    }
+    50%{
+        height: 35rem;
+    }
+    75%{
+        height: 35rem;
+    }
+    100%{
+        height: 0px;
+    }
+}
+
+.title--letters{
+    margin:0;
+    transform: translateY(-50px);
+    opacity:0;
+    transition: all 0.5s ease-in;
+}
+
+.ttshow{
+    opacity:1;
+    transform: translateY(0px);
+}
+
+.ttfade{
+    opacity:0;
+    transform: translateX(50px)
+}
+
+.mainGame--board{
+    display:none;
+    grid-area: gameBoard;
+    height: 55vh;
+    margin:1rem;
+    align-items: center;
+    flex-flow: column;
+}
+
+.row{
+    width:fit-content;
+    margin:auto;
+}
+
+.boardSquare{
+    width:10rem;
+    height: 10rem;
+    margin:1rem;
+}
 .gameOptions{
     align-items: center;
     display:flex;
@@ -95,9 +156,4 @@ select{
     font-size: 24px;
     height: 10rem;
     width: 70%;
-}
-
-.mainGame--board{
-    display:none;
-    grid-area: gameBoard;
 }
