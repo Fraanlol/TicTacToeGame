@@ -2,8 +2,7 @@ html{
     box-sizing: border-box;
     font-size: 10px;
     padding:0;
-    margin:0;
-    
+    margin:0;   
 }
 
 body{   
@@ -48,16 +47,17 @@ select{
     justify-content:space-around;
 }
 
-.players--button{
+.players--button__x , .players--button__o{
     background-color:white;
     border-radius: 5px;
     font-size: 1.5rem;
     height:3rem;
     width: 25%;
+    border:none;
 }
 
 .players--button__unselected{
-    border: 2px solid lightgray;
+    border: 2px solid rgb(211, 211, 211);
     color: grey;
     font-weight: 600;
 }
@@ -71,14 +71,18 @@ select{
 .mainGame{
     grid-area: mainGame;
     margin:10px;
-    background-color: lightblue;
+    background-color: rgb(55, 1, 117);
+    height:350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .mainGame--title{
     font-size: 10rem;
     margin: 1rem;
     text-align: center;
-    height: 55vh;
+    
 }
 
 .title--vline{
@@ -124,21 +128,35 @@ select{
 .mainGame--board{
     display:none;
     grid-area: gameBoard;
-    height: 55vh;
+   
     margin:1rem;
     align-items: center;
     flex-flow: column;
+    justify-content: center;
 }
 
 .row{
     width:fit-content;
-    margin:auto;
+    font-size: 0;
 }
 
 .boardSquare{
     width:10rem;
     height: 10rem;
-    margin:1rem;
+    border:none;
+    background:rgb(55, 1, 117);
+    margin:0;
+    font-size: 4rem;
+    font-weight: bolder;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.border-r{
+    border-right: 5px solid black;
+}
+.border-b{
+    border-bottom: 5px solid black;
 }
 .gameOptions{
     align-items: center;

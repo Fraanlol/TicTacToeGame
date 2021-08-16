@@ -21,10 +21,10 @@
             </div>
 
             <div class="players">
-                <button class="players--button players--button__unselected">
+                <button id='changePlayer' class="players--button__x players--button__unselected">
                     X
                 </button>
-                <button class="players--button players--button__unselected">
+                <button id='changePlayer' class="players--button__o players--button__unselected">
                     O
                 </button>
             </div>
@@ -32,7 +32,7 @@
             <div class="mainGame">
 
                 <div class="mainGame--title">
-                    <div class="title--vline"></div>
+                    <div class="" id="vline"></div>
                     <p class="title--letters">TXc</p>
                     <p class="title--letters">TXc</p>
                     <p class="title--letters">TXe</p>
@@ -40,37 +40,37 @@
 
                 <div class="mainGame--board">
                     <div class="firstRow row">
-                        <button class="boardSquare">
+                        <button class="boardSquare  border-r  border-b" data-index = '0'>
 
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare  border-r  border-b" data-index = '1'>
     
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare  border-b" data-index ='2'>
     
                         </button>
                     </div>
                    
                     <div class="secondRow row">
-                        <button class="boardSquare">
+                        <button class="boardSquare border-r  border-b" data-index = '3'>
 
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare border-r  border-b" data-index = '4'>
     
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare  border-b" data-index = '5'>
     
                         </button>
                     </div>
 
                     <div class="thirdRow row">
-                        <button class="boardSquare">
+                        <button class="boardSquare border-r" data-index = '6'>
 
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare border-r" data-index = '7'>
     
                         </button>
-                        <button class="boardSquare">
+                        <button class="boardSquare" data-index = '8'>
     
                         </button>
                     </div>
@@ -84,27 +84,6 @@
            
         </div>
     </main>
-    
-    <script>
-        let words = document.querySelectorAll(".title--letters");
-        setTimeout(() => {
-            Array.from(words).forEach((word,index) =>{
-                setTimeout(() => {
-                    word.classList.toggle("ttshow");
-                }, index*500)
-            })
-        }, 1000)
-        setTimeout(() => {
-            Array.from(words).forEach((word,index) =>{
-                setTimeout(() => {
-                    word.classList.toggle("ttshow");
-                }, index*500)
-            })
-        }, 5000)
-        setTimeout(() => {
-            document.querySelector(".mainGame--title").style.display = "none";
-            document.querySelector(".mainGame--board").style.display = "flex";
-        },6500)
-    </script>
+<script src="startGame.js"></script>
 </body>
 </html>
