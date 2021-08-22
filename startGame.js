@@ -38,6 +38,7 @@ function start() {
                         })
                     )
                 }else{
+                    document.querySelector('#levels').style.display='block';
                     Array.from(document.querySelectorAll('.boardSquare')).forEach(
                         key => key.addEventListener('click', (e) => { 
                             if(e.target.innerText == ''){
@@ -139,11 +140,15 @@ const gameController = (() => {
         if (player1.getSign() != 'X' && sign == 'X') {
             player1.setSign('X', true);
             player2.setSign('O');
+            scores['X'] = -10;
+            scores['O'] = 10;
             endGame();
         }
         else if (player1.getSign() != 'O' && sign == 'O') {
             player1.setSign('O', true);
             player2.setSign('X');
+            scores['X'] = 10;
+            scores['O'] = -10;
             endGame();
         }
         else if(sign != 'O' && sign != 'X') {
@@ -164,8 +169,8 @@ const gameController = (() => {
     }
 
     let scores = {
-        'X' : -10,
-        'O' : 10,
+        'X' : 10,
+        'O' : -10,
         'DRAW' : 0,
     }
 
@@ -184,7 +189,8 @@ const gameController = (() => {
                 }
             }
         }
-        playGame(move);
+
+        difficulty(move);
     }
 
     const miniMax = (board, depth, maximizing) => { 
@@ -198,7 +204,7 @@ const gameController = (() => {
             for(let i = 0; i < 9; i++){
                 if(boardController.getCell(i) == ''){
                     boardController.fillBoard(i,player2.getSign())
-                    let score = miniMax(board,depth + 1, false);
+                    let score = miniMax(board,depth + 1, false) - depth;
                     boardController.fillBoard(i,'');
                     if(score > bestScore){
                         bestScore = score;
@@ -211,7 +217,7 @@ const gameController = (() => {
             for(let i = 0; i < 9; i++){
                 if(boardController.getCell(i) == ''){
                     boardController.fillBoard(i,player1.getSign())
-                    let score = miniMax(board,depth + 1, true);
+                    let score = miniMax(board,depth + 1, true) + depth;
                     boardController.fillBoard(i,'');
                     if(score < bestScore){
                         bestScore = score;
@@ -222,6 +228,27 @@ const gameController = (() => {
         }
     }
     const getStatus = () => playing;
+
+    const playRandom = () => {
+        let available = [];
+        for(let i = 0; i < 9; i++){
+            boardController.getCell(i) == '' ? available.push(i):false;
+        }
+        playGame(available[Math.floor(Math.random()*available.length)]);
+        available = [];
+    }
+
+    const difficulty = (move) => {
+        actualDif = document.querySelector('#levels').value;
+
+        values = {
+            'easy' : 0.1,
+            'medium' : 0.5,
+            'hard' : 0.8,
+            'unbeatable' : 1,
+        }
+        Math.random() > values[actualDif] ? playRandom():playGame(move);
+    }
     return{changeSign, playGame, endGame, bestMovement, getStatus}
 })();
 
