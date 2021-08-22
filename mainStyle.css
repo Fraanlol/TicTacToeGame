@@ -226,3 +226,22 @@ select{
     box-shadow: 4px 4px black;
     transform: translateY(4px);
 }
+
+@media (max-width: 950px){
+    .gameMenu{
+        width: 80%;
+    }
+}
+
+@media (max-width: 450px){
+    .gameMenu{
+        width: 100%;
+    }
+}
+
+@media (max-width: 350px){
+    .boardSquare{
+        width:7rem;
+        height: 7rem;
+    }
+}
