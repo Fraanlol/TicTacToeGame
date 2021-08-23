@@ -38,7 +38,7 @@ function start() {
                         })
                     )
                 }else{
-                    document.querySelector('.difficulty--select').style.display='block';
+                    document.querySelector('#levels').style.display='initial';
                     Array.from(document.querySelectorAll('.boardSquare')).forEach(
                         key => key.addEventListener('click', (e) => { 
                             if(e.target.innerText == ''){
