@@ -38,7 +38,7 @@ function start() {
                         })
                     )
                 }else{
-                    document.querySelector('#levels').style.display='block';
+                    document.querySelector('.difficulty--select').style.display='block';
                     Array.from(document.querySelectorAll('.boardSquare')).forEach(
                         key => key.addEventListener('click', (e) => { 
                             if(e.target.innerText == ''){
@@ -51,7 +51,7 @@ function start() {
                     )
                 }
                 document.querySelector('.gameOptions--restartGame').addEventListener('click', () => { 
-                gameController.endGame();
+                window.location.reload();
                 })
             })
         })
@@ -142,18 +142,30 @@ const gameController = (() => {
             player2.setSign('O');
             scores['X'] = -10;
             scores['O'] = 10;
+            resetValue();
             endGame();
         }
         else if (player1.getSign() != 'O' && sign == 'O') {
             player1.setSign('O', true);
             player2.setSign('X');
             scores['X'] = 10;
-            scores['O'] = -10;
+            scores['O'] =-10;
+            resetValue();
             endGame();
         }
         else if(sign != 'O' && sign != 'X') {
             throw 'Incorrect sign';
         }
+    }
+
+    const updateScore = (sign) => {
+       document.querySelector(`.p-${sign}`).innerText++;
+        endGame();
+    }
+
+    const resetValue = () => {
+       document.querySelector(`.p-X`).innerText = 0;
+       document.querySelector(`.p-O`).innerText = 0;
     }
     const endGame = () => {
         boardController.clearGrid();
@@ -162,10 +174,20 @@ const gameController = (() => {
     }
     const playGame = (index) => {
         playing = true;
-        let player = round % 2 == 0 ? player1 : player2;
-        boardController.fillBoard(index,player.getSign());
+        let player = round % 2 == 0 ? player1.getSign() : player2.getSign();
+        boardController.fillBoard(index,player);
         boardController.updateGrid();
-        return boardController.checkWinner() != false ? endGame():round++;
+        if(boardController.checkWinner() != false){
+            if(boardController.checkWinner() == 'DRAW'){
+                endGame()
+                document.querySelector('.winner').innerText = `¡Its a Draw!`
+            }else{
+                updateScore(player);
+                document.querySelector('.winner').innerText = `Winner is ${player}`
+            }
+        }else{
+            round++;
+        }
     }
 
     let scores = {
@@ -249,7 +271,7 @@ const gameController = (() => {
         }
         Math.random() > values[actualDif] ? playRandom():playGame(move);
     }
-    return{changeSign, playGame, endGame, bestMovement, getStatus}
+    return{changeSign, playGame, endGame, bestMovement, getStatus, resetValue}
 })();
 
 start();

@@ -10,6 +10,7 @@
     <main>
         <div class="gameMenu">
             <div class="difficulty">
+
                 <form action="" class="difficulty--select">
                     <select name="levels" id="levels">
                         <option value="easy">Easy</option>
@@ -18,17 +19,32 @@
                         <option value="unbeatable">Unbeatable</option>
                     </select>
                 </form>
+
             </div>
 
             <div class="players">
                 <button id='changePlayer' class="players--button__x players--button__unselected">
                     X
                 </button>
+                <p class="points p-X">
+                    0
+                </p>
+                <p class="separate">
+                    :
+                </p>
+                <p class="points p-O">
+                    0
+                </p>
                 <button id='changePlayer' class="players--button__o players--button__unselected">
                     O
                 </button>
             </div>
-          
+
+            <div class="displayWinner">
+                <p class="winner">
+                    
+                </p>
+            </div>
             <div class="mainGame">
 
                 <div class="mainGame--title">
